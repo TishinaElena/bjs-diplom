@@ -1,4 +1,4 @@
-'use strict'; // Подключаем строгий режим выполнения кода
+'use strict'; // Подключаем строгий режим 
 
 // Создаем объект класса UserForm
 const userForm = new UserForm();
