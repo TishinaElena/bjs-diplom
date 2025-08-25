@@ -93,7 +93,10 @@ updateFavoritesList();
 favoritesWidget.addUserCallback = (data) => {
   ApiConnector.addUserToFavorites(data, (response) => {
     if (response.success) {
-      updateFavoritesList();
+      // Используем данные из ответа, а не делаем новый запрос
+      favoritesWidget.clearTable();
+      favoritesWidget.fillTable(response.data);
+      moneyManager.updateUsersList(response.data);
       favoritesWidget.setMessage(true, 'Пользователь успешно добавлен в избранное');
     } else {
       favoritesWidget.setMessage(false, response.error || 'Ошибка добавления пользователя');
@@ -105,7 +108,10 @@ favoritesWidget.addUserCallback = (data) => {
 favoritesWidget.removeUserCallback = (data) => {
   ApiConnector.removeUserFromFavorites(data, (response) => {
     if (response.success) {
-      updateFavoritesList();
+      // Используем данные из ответа, а не делаем новый запрос
+      favoritesWidget.clearTable();
+      favoritesWidget.fillTable(response.data);
+      moneyManager.updateUsersList(response.data);
       favoritesWidget.setMessage(true, 'Пользователь успешно удален из избранного');
     } else {
       favoritesWidget.setMessage(false, response.error || 'Ошибка удаления пользователя');
